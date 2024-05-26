@@ -3,7 +3,6 @@ import torch.nn.functional as F
 
     """
     Inverted Transformer
-    with O(L^2) complexity
     Paper link: https://arxiv.org/pdf/2310.06625
     """
 
