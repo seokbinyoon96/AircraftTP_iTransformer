@@ -2,6 +2,12 @@ import torch
 import torch.nn as nn
 import math
 
+    """
+    Inverted Transformer
+    with O(L^2) complexity
+    Paper link: https://arxiv.org/pdf/2310.06625
+    """
+
 
 class PositionalEmbedding(nn.Module):
     def __init__(self, d_model, max_len=5000):
