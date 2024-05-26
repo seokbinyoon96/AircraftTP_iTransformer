@@ -8,7 +8,6 @@ class iTransformer(nn.Module):
         self.d_model = d_model
         # Embedding
         self.enc_embedding = DataEmbedding_inverted(seq_len, d_model, embed, freq, dropout)
-        #self.conv_layer = nn.Conv1d(in_channels=d_model, out_channels=d_model, kernel_size=7, stride=6)
 
         # Encoder-only architecture
         self.cor_encoder = Encoder(
@@ -33,7 +32,10 @@ class iTransformer(nn.Module):
             nn.Linear(self.d_model, self.d_model // 2),
             nn.GELU(),
             nn.Dropout(dropout),
-            nn.Linear(self.d_model // 2, self.pred_len)
+            nn.Linear(self.d_model // 2, self.d_model // 4),
+            nn.GELU(),
+            nn.Dropout(dropout),
+            nn.Linear(self.d_model // 4, self.pred_len)
         )
 
         
