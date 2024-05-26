@@ -7,6 +7,12 @@ from reformer_pytorch import LSHSelfAttention
 from einops import rearrange
 
 
+    """
+    Inverted Transformer
+    with O(L^2) complexity
+    Paper link: https://arxiv.org/pdf/2310.06625
+    """
+
 # Code implementation from https://github.com/thuml/Flowformer
 class FlowAttention(nn.Module):
     def __init__(self, attention_dropout=0.1):
