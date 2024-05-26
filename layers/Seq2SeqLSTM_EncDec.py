@@ -15,19 +15,6 @@ class Encoder(nn.Module):
  
         return outputs, hidden, cell
     
-class Attention(nn.Module):
-    def __init__(self, hidden_dim):
-        super(Attention, self).__init__()
-        self.hidden_dim = hidden_dim
-
-    def forward(self, hidden, encoder_outputs):
-
-        hidden = hidden.unsqueeze(2)
-        attention_energies = torch.bmm(encoder_outputs, hidden).squeeze(2)
-
-        return F.softmax(attention_energies, dim=1)
-
-
 class Decoder(nn.Module):
     def __init__(self, output_dim, hidden_dim, num_layers, dropout=0.1):
         super(Decoder, self).__init__()
